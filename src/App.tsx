@@ -667,7 +667,7 @@ function App() {
             <span className="text-portfolio-text-light">¡Somos importantes!</span>
           </h3>
           <p className="text-portfolio-text max-w-2xl mx-auto">
-            Confiar en tus virtudes y aptitudes te da tranquilidad.             
+            Confiar en tus virtudes y aptitudes te dará tranquilidad.             
           </p>
           <div className="mt-6">
             <a

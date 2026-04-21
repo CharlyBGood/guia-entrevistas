@@ -55,10 +55,10 @@ export default function Header() {
         </p>
 
         <div className="mt-8 flex justify-center gap-2 flex-wrap">
-          <span className="px-3 py-1 rounded-full border border-portfolio-accent text-xs text-portfolio-text-light">Fundamentos</span>
-          <span className="px-3 py-1 rounded-full border border-portfolio-accent text-xs text-portfolio-text-light">Comunicación</span>
-          <span className="px-3 py-1 rounded-full border border-portfolio-accent text-xs text-portfolio-text-light">Escenarios</span>
-          <span className="px-3 py-1 rounded-full border border-portfolio-accent text-xs text-portfolio-text-light">Práctica</span>
+          <a href="#section-1" className="px-3 py-1 rounded-full border border-portfolio-accent text-xs text-portfolio-text-light hover:border-portfolio-orange hover:text-portfolio-orange transition-colors">Fundamentos</a>
+          <a href="#section-2" className="px-3 py-1 rounded-full border border-portfolio-accent text-xs text-portfolio-text-light hover:border-portfolio-orange hover:text-portfolio-orange transition-colors">Comunicación</a>
+          <a href="#section-5" className="px-3 py-1 rounded-full border border-portfolio-accent text-xs text-portfolio-text-light hover:border-portfolio-orange hover:text-portfolio-orange transition-colors">Escenarios</a>
+          <a href="#section-14" className="px-3 py-1 rounded-full border border-portfolio-accent text-xs text-portfolio-text-light hover:border-portfolio-orange hover:text-portfolio-orange transition-colors">Práctica</a>
         </div>
       </div>
     </header>
