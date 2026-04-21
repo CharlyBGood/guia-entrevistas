@@ -1,24 +1,27 @@
 import {
-  Briefcase,
-  Target,
-  MessageCircle,
-  Lightbulb,
-  Users,
-  CheckCircle2,
-  AlertTriangle,
-  HelpCircle,
-  Compass,
-  Mic,
-  BookOpen,
-  Sparkles,
-  Layers,
-  ListChecks,
-  TrendingUp,
-  Handshake,
-  Wrench,
-  Brain,
-  Key,
-} from 'lucide-react';
+  FaBriefcase,
+  FaBullseye,
+  FaComments,
+  FaLightbulb,
+  FaUsers,
+  FaCheckCircle,
+  FaExclamationTriangle,
+  FaQuestionCircle,
+  FaCompass,
+  FaMicrophone,
+  FaBookOpen,
+  FaHandSparkles,
+  FaLayerGroup,
+  FaListUl,
+  FaChartLine,
+  FaHandshake,
+  FaTools,
+  FaBrain,
+  FaKey,
+  FaChevronDown,
+  FaDownload,
+} from 'react-icons/fa';
+import { useState } from 'react';
 import Header from './components/Header';
 import Section from './components/Section';
 import InfoBox from './components/InfoBox';
@@ -27,7 +30,64 @@ import QAItem from './components/QAItem';
 import Example from './components/Example';
 import Footer from './components/Footer';
 
+const TECH_QUESTIONS = [
+  '¿Cuáles son los fundamentos del área en la que trabajás?',
+  '¿Cómo estructurás y organizás tu trabajo?',
+  '¿Cuál es la diferencia entre las principales herramientas o enfoques que usás?',
+  '¿Cómo manejás y trabajás con datos o información?',
+  '¿Cómo validás o testeás tu trabajo?',
+  '¿Cómo integrás tu trabajo con otros sistemas o personas?',
+  '¿Cómo asegurás calidad en lo que entregás?',
+  '¿Podés describir una solución personalizada que hayas implementado?',
+  '¿Cuáles son las mejores prácticas que aplicás en tu día a día?',
+  '¿Podés guiarnos por un proyecto en el que hayas trabajado y cuál fue tu rol?',
+];
+
 function App() {
+  const [openAnswers, setOpenAnswers] = useState<Record<number, boolean>>({});
+  const [answers, setAnswers] = useState<Record<number, string>>({});
+
+  const toggleAnswer = (i: number) =>
+    setOpenAnswers((prev) => ({ ...prev, [i]: !prev[i] }));
+
+  const handleAnswer = (i: number, value: string) =>
+    setAnswers((prev) => ({ ...prev, [i]: value }));
+
+  const downloadGuide = () => {
+    const rows = TECH_QUESTIONS.map(
+      (q, i) => `
+      <div style="margin-bottom:24px;border:1px solid #333;border-radius:8px;padding:16px;background:#1a1a2e">
+        <p style="font-weight:bold;color:#f8b400;margin:0 0 10px">${String(i + 1).padStart(2, '0')}. ${q}</p>
+        <textarea
+          style="width:100%;min-height:100px;background:#111;color:#e2e8f0;border:1px solid #444;border-radius:6px;padding:10px;font-size:14px;resize:vertical;box-sizing:border-box"
+          placeholder="Tu respuesta..."
+        >${answers[i] ? answers[i].replace(/</g, '&lt;').replace(/>/g, '&gt;') : ''}</textarea>
+      </div>`,
+    ).join('');
+
+    const html = `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mis respuestas – Guía de Entrevistas · SinapsiaLab</title>
+  <style>body{font-family:sans-serif;background:#0d0d1a;color:#e2e8f0;max-width:800px;margin:40px auto;padding:24px}h1{color:#f8b400}a{color:#f8b400}textarea:focus{outline:2px solid #f8b400}</style>
+</head>
+<body>
+  <h1>Preguntas técnicas – mis respuestas</h1>
+  <p style="color:#94a3b8">Completá cada respuesta y guardá este archivo para seguir practicando. Generado con <a href="https://sinapsialab.com" target="_blank">SinapsiaLab</a>.</p>
+  ${rows}
+</body>
+</html>`;
+
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'mis-respuestas-entrevista.html';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="min-h-screen bg-portfolio-deep text-portfolio-text-light">
       <Header />
@@ -36,13 +96,13 @@ function App() {
         {/* Intro panel */}
         <div className="panel mb-8 p-6 md:p-8">
           <div className="flex items-start gap-4 mb-4">
-            <Briefcase className="w-7 h-7 text-portfolio-orange flex-shrink-0 mt-1" />
+            <FaBriefcase className="w-7 h-7 text-portfolio-orange flex-shrink-0 mt-1" />
             <div>
               <h2 className="text-2xl md:text-3xl font-bold text-portfolio-text-light mb-2">
                 Cómo prepararte para una entrevista (o reunión con un cliente)
               </h2>
               <p className="text-portfolio-text">
-                Una guía pensada para profesionales en búsqueda de empleo y emprendedores que quieren cerrar proyectos con confianza.
+                Una guía pensada para quienes están buscando empleo o emprendedor@s que quieren cerrar proyectos con confianza.
               </p>
             </div>
           </div>
@@ -66,14 +126,14 @@ function App() {
           </div>
         </div>
 
-        <InfoBox type="success" icon={<CheckCircle2 />} title="Regla de oro">
-          <p>La honestidad con entusiasmo genuino es más poderosa que cualquier historia fabricada, y mucho más sostenible.</p>
+        <InfoBox type="success" icon={<FaCheckCircle />} title="Importante">
+          <p>Vos también estás evaluando tu interés en la propuesta, cuanta más soltura y autenticidad ofrezcas, más traquilidad vas a tener en la conversación, y mejores decisiones vas a poder tomar.</p>
         </InfoBox>
 
         {/* Parte 1 separator */}
         <div className="panel mb-8 p-6 text-center">
           <div className="inline-flex items-center gap-2 mb-2 px-4 py-1.5 rounded-full border border-portfolio-accent text-xs uppercase tracking-widest text-portfolio-text">
-            <Compass className="w-3.5 h-3.5 text-portfolio-orange" />
+            <FaCompass className="w-3.5 h-3.5 text-portfolio-orange" />
             Parte 1
           </div>
           <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">
@@ -85,7 +145,7 @@ function App() {
         <Section
           id="1"
           title="Antes de la entrevista o reunión"
-          icon={<Target className="w-8 h-8" />}
+          icon={<FaBullseye className="w-8 h-8" />}
         >
           <QAItem number="1." question="¿Qué es lo primero que deberías hacer cuando te informan sobre una entrevista o reunión próxima?">
             <p>
@@ -121,7 +181,7 @@ function App() {
         <Section
           id="2"
           title="Durante la conversación"
-          icon={<MessageCircle className="w-8 h-8" />}
+          icon={<FaComments className="w-8 h-8" />}
         >
           <QAItem number="4." question="¿Por qué es importante hacer preguntas?">
             <p>
@@ -163,7 +223,7 @@ function App() {
         <Section
           id="3"
           title="Cómo manejar la incertidumbre"
-          icon={<HelpCircle className="w-8 h-8" />}
+          icon={<FaQuestionCircle className="w-8 h-8" />}
         >
           <QAItem number="10." question="¿Qué hacer si no podés responder algo?">
             <p>
@@ -184,7 +244,7 @@ function App() {
             <p>
               Intentá inferir por el contexto. Si no podés, <strong>pedí una aclaración sin problema</strong>. Es mucho mejor que responder algo que no corresponde.
             </p>
-            <InfoBox type="warning" icon={<AlertTriangle />}>
+            <InfoBox type="warning" icon={<FaExclamationTriangle />}>
               <p>No busques nada en el momento, eso sí puede dar mala impresión.</p>
             </InfoBox>
           </QAItem>
@@ -199,7 +259,7 @@ function App() {
         <Section
           id="4"
           title="Lenguaje, tono y feedback"
-          icon={<Mic className="w-8 h-8" />}
+          icon={<FaMicrophone className="w-8 h-8" />}
         >
           <QAItem number="14." question="¿Qué tipo de lenguaje conviene usar?">
             <p>
@@ -220,7 +280,7 @@ function App() {
         <Section
           id="5"
           title="Situaciones frecuentes y cómo manejarlas"
-          icon={<Sparkles className="w-8 h-8" />}
+          icon={<FaHandSparkles className="w-8 h-8" />}
         >
           <div className="space-y-5">
             <div>
@@ -250,8 +310,8 @@ function App() {
 
             <div>
               <h4 className="text-lg font-bold text-portfolio-orange mb-2">Inventar logros o exagerar</h4>
-              <InfoBox type="warning" icon={<AlertTriangle />}>
-                <p><strong>Nunca.</strong> La honestidad con entusiasmo genuino es más poderosa que cualquier historia fabricada, y mucho más sostenible.</p>
+              <InfoBox type="warning" icon={<FaExclamationTriangle />}>
+                <p>La <strong>honestidad</strong> con entusiasmo genuino es más poderosa que cualquier historia fabricada, y mucho más sostenible.</p>
               </InfoBox>
             </div>
 
@@ -282,8 +342,8 @@ function App() {
 
             <div>
               <h4 className="text-lg font-bold text-portfolio-orange mb-2">Bluffear cuando no sabés algo</h4>
-              <InfoBox type="warning" icon={<AlertTriangle />}>
-                <p><strong>Nunca.</strong> Reconocer que no sabés algo y mostrar disposición a aprenderlo es una respuesta válida y profesional.</p>
+              <InfoBox type="warning" icon={<FaExclamationTriangle />}>
+                <p><strong>Reconocer</strong> que no sabés algo y mostrar disposición a aprenderlo es una respuesta válida y profesional.</p>
               </InfoBox>
             </div>
 
@@ -299,7 +359,7 @@ function App() {
 
             <div>
               <h4 className="text-lg font-bold text-portfolio-orange mb-2">En reuniones remotas: voz y energía</h4>
-              <InfoBox type="info" icon={<Mic />}>
+              <InfoBox type="info" icon={<FaMicrophone />}>
                 <p>Si no hay video, tu voz es todo. Variá el tono, mostrá interés, hablá con claridad. La energía se transmite igual.</p>
               </InfoBox>
             </div>
@@ -309,7 +369,7 @@ function App() {
         {/* Parte 2 separator */}
         <div className="panel mb-8 p-6 text-center mt-12">
           <div className="inline-flex items-center gap-2 mb-2 px-4 py-1.5 rounded-full border border-portfolio-accent text-xs uppercase tracking-widest text-portfolio-text">
-            <Layers className="w-3.5 h-3.5 text-portfolio-orange" />
+            <FaLayerGroup className="w-3.5 h-3.5 text-portfolio-orange" />
             Parte 2
           </div>
           <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">
@@ -321,7 +381,7 @@ function App() {
         <Section
           id="6"
           title="Sobre tu trayectoria"
-          icon={<TrendingUp className="w-8 h-8" />}
+          icon={<FaChartLine className="w-8 h-8" />}
         >
           <QAItem question="¿Cómo llegaste a este rol o área y cómo fue tu camino?">
             <p>
@@ -336,7 +396,7 @@ function App() {
         <Section
           id="7"
           title="Habilidades técnicas o de servicio"
-          icon={<Wrench className="w-8 h-8" />}
+          icon={<FaTools className="w-8 h-8" />}
         >
           <QAItem question="¿Podés contarnos sobre un proyecto reciente donde aplicaste tus habilidades principales?">
             <p>
@@ -351,7 +411,7 @@ function App() {
         <Section
           id="8"
           title="Resolución de problemas"
-          icon={<Brain className="w-8 h-8" />}
+          icon={<FaBrain className="w-8 h-8" />}
         >
           <QAItem question="¿Podés describir un problema desafiante que enfrentaste y cómo lo resolviste?">
             <p>
@@ -366,7 +426,7 @@ function App() {
         <Section
           id="9"
           title="Aprendizaje autónomo"
-          icon={<BookOpen className="w-8 h-8" />}
+          icon={<FaBookOpen className="w-8 h-8" />}
         >
           <QAItem question="¿Cuál fue el proyecto más desafiante donde tuviste que aprender algo nuevo sobre la marcha?">
             <p>
@@ -381,7 +441,7 @@ function App() {
         <Section
           id="10"
           title="Desarrollo profesional"
-          icon={<Lightbulb className="w-8 h-8" />}
+          icon={<FaLightbulb className="w-8 h-8" />}
         >
           <QAItem question="¿Cómo estás encarando tu crecimiento profesional?">
             <p>
@@ -396,7 +456,7 @@ function App() {
         <Section
           id="11"
           title="Comunicación"
-          icon={<Users className="w-8 h-8" />}
+          icon={<FaUsers className="w-8 h-8" />}
         >
           <QAItem question="¿Cómo garantizás una comunicación efectiva?">
             <p>
@@ -411,7 +471,7 @@ function App() {
         <Section
           id="12"
           title="Las 4 claves para responder bien cualquier pregunta"
-          icon={<Key className="w-8 h-8" />}
+          icon={<FaKey className="w-8 h-8" />}
         >
           <div className="grid md:grid-cols-2 gap-4">
             <div className="panel-inner p-5">
@@ -459,7 +519,7 @@ function App() {
         <Section
           id="13"
           title="Temas clave para preparar"
-          icon={<ListChecks className="w-8 h-8" />}
+          icon={<FaListUl className="w-8 h-8" />}
         >
           <p className="mb-6 italic text-portfolio-text">
             Antes de cualquier entrevista técnica o reunión con cliente, tené historias listas para estos temas:
@@ -531,37 +591,60 @@ function App() {
         <Section
           id="14"
           title="Preguntas técnicas o de fondo para preparar"
-          icon={<HelpCircle className="w-8 h-8" />}
+          icon={<FaQuestionCircle className="w-8 h-8" />}
         >
-          <InfoBox type="info" icon={<Lightbulb />} title="Formato de preparación">
+          <InfoBox type="info" icon={<FaLightbulb />} title="Formato de preparación">
             <p>El contenido varía según el rol o el contexto, pero el formato de preparación es siempre el mismo: <strong>respondé con ejemplos concretos</strong>.</p>
           </InfoBox>
 
           <ul className="space-y-3 mt-4">
-            {[
-              '¿Cuáles son los fundamentos del área en la que trabajás?',
-              '¿Cómo estructurás y organizás tu trabajo?',
-              '¿Cuál es la diferencia entre las principales herramientas o enfoques que usás?',
-              '¿Cómo manejás y trabajás con datos o información?',
-              '¿Cómo validás o testeás tu trabajo?',
-              '¿Cómo integrás tu trabajo con otros sistemas o personas?',
-              '¿Cómo asegurás calidad en lo que entregás?',
-              '¿Podés describir una solución personalizada que hayas implementado?',
-              '¿Cuáles son las mejores prácticas que aplicás en tu día a día?',
-              '¿Podés guiarnos por un proyecto en el que hayas trabajado y cuál fue tu rol?',
-            ].map((q, i) => (
-              <li key={i} className="panel-inner p-4 flex items-start gap-3">
-                <span className="gradient-text font-bold flex-shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                <span className="text-portfolio-text-light">{q}</span>
+            {TECH_QUESTIONS.map((q, i) => (
+              <li key={i} className="panel-inner overflow-hidden">
+                <button
+                  onClick={() => toggleAnswer(i)}
+                  className="w-full p-4 flex items-center gap-3 text-left hover:bg-white/5 transition-colors"
+                >
+                  <span className="gradient-text font-bold flex-shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="text-portfolio-text-light flex-1">{q}</span>
+                  <FaChevronDown
+                    className={`w-4 h-4 text-portfolio-text flex-shrink-0 transition-transform duration-200 ${
+                      openAnswers[i] ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                {openAnswers[i] && (
+                  <div className="px-4 pb-4">
+                    <textarea
+                      value={answers[i] ?? ''}
+                      onChange={(e) => handleAnswer(i, e.target.value)}
+                      placeholder="Escribí tu respuesta aquí..."
+                      rows={4}
+                      className="w-full bg-portfolio-deep border border-portfolio-accent rounded-lg p-3 text-sm text-portfolio-text-light placeholder:text-portfolio-text/50 resize-y focus:outline-none focus:border-portfolio-orange transition-colors"
+                    />
+                  </div>
+                )}
               </li>
             ))}
           </ul>
+
+          <div className="mt-6 flex flex-col sm:flex-row items-center gap-3 p-4 panel-inner rounded-lg">
+            <p className="text-sm text-portfolio-text flex-1">
+              Descargá la guía con tus respuestas como archivo editable para seguir practicando.
+            </p>
+            <button
+              onClick={downloadGuide}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-portfolio-accent bg-portfolio-base hover:bg-portfolio-dark text-portfolio-text-light hover:text-portfolio-orange transition-colors text-sm font-semibold whitespace-nowrap"
+            >
+              <FaDownload className="w-4 h-4" />
+              Descargar mis respuestas
+            </button>
+          </div>
         </Section>
 
         <Section
           id="15"
           title="Checklist final antes de la entrevista"
-          icon={<CheckCircle2 className="w-8 h-8" />}
+          icon={<FaCheckCircle className="w-8 h-8" />}
         >
           <Checklist items={[
             'Investigué sobre la empresa, el cliente o el proyecto',
@@ -578,14 +661,24 @@ function App() {
         </Section>
 
         <div className="panel mb-8 p-6 md:p-8 mt-12 text-center">
-          <Handshake className="w-10 h-10 text-portfolio-orange mx-auto mb-4" />
+          <FaHandshake className="w-10 h-10 text-portfolio-orange mx-auto mb-4" />
           <h3 className="text-2xl md:text-3xl font-extrabold leading-tight mb-3">
-            <span className="gradient-text">Comunicá valor.</span>{' '}
-            <span className="text-portfolio-text-light">Generá confianza.</span>
+            <span className="gradient-text">Recuerda:</span>{' '}
+            <span className="text-portfolio-text-light">¡Somos importantes!</span>
           </h3>
           <p className="text-portfolio-text max-w-2xl mx-auto">
-            La preparación no elimina los nervios: te da algo sólido sobre lo que apoyarte cuando aparecen.
+            Confiar en tus virtudes y aptitudes te da tranquilidad.             
           </p>
+          <div className="mt-6">
+            <a
+              href="https://sinapsialab.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="neon-border-button inline-flex items-center gap-2 px-6 py-3 rounded-full text-portfolio-text-light hover:text-portfolio-orange transition-colors text-sm font-semibold tracking-wide"
+            >
+              Más recursos en SinapsiaLab →
+            </a>
+          </div>
         </div>
       </main>
 

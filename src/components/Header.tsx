@@ -1,4 +1,4 @@
-import { Briefcase } from 'lucide-react';
+import { FaBriefcase } from 'react-icons/fa';
 
 export default function Header() {
   return (
@@ -41,7 +41,7 @@ export default function Header() {
 
       <div className="max-w-6xl mx-auto px-4 pb-12 pt-6 relative z-10 text-center">
         <div className="inline-flex items-center gap-3 mb-5 px-4 py-1.5 rounded-full border border-portfolio-accent text-xs uppercase tracking-widest text-portfolio-text">
-          <Briefcase className="w-3.5 h-3.5 text-portfolio-orange" />
+          <FaBriefcase className="w-3.5 h-3.5 text-portfolio-orange" />
           Tutorial · Entrevistas y reuniones
         </div>
 
@@ -51,7 +51,7 @@ export default function Header() {
         </h1>
 
         <p className="text-portfolio-text text-base md:text-lg max-w-2xl mx-auto">
-          Guía práctica para profesionales en búsqueda de empleo y emprendedores que quieren cerrar proyectos con clientes.
+          Guía práctica si estás buscando empleo o si emprendes y necesitas cerrar proyectos con clientes.
         </p>
 
         <div className="mt-8 flex justify-center gap-2 flex-wrap">

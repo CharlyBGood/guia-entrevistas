@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Square, CheckSquare } from 'lucide-react';
+import { FaSquare, FaCheckSquare } from 'react-icons/fa';
 
 interface ChecklistProps {
   items: string[];
@@ -30,9 +30,9 @@ export default function Checklist({ items }: ChecklistProps) {
                 className="flex items-start gap-3 w-full text-left p-2 rounded-md hover:bg-portfolio-medium/40 transition-colors"
               >
                 {isDone ? (
-                  <CheckSquare className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <FaCheckSquare className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
                 ) : (
-                  <Square className="w-5 h-5 text-portfolio-text flex-shrink-0 mt-0.5" />
+                  <FaSquare className="w-5 h-5 text-portfolio-text flex-shrink-0 mt-0.5" />
                 )}
                 <span className={isDone ? 'line-through text-portfolio-text/60' : 'text-portfolio-text-light'}>
                   {item}
