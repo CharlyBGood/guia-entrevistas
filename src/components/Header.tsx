@@ -5,7 +5,7 @@ export default function Header() {
     <header className="bg-portfolio-deep border-b border-portfolio-accent relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-pink-500 via-yellow-400 to-blue-500 opacity-80"></div>
 
-      <div className="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between gap-4 relative z-10">
+      <div className="max-w-3xl mx-auto px-4 py-5 flex items-center justify-between gap-4 relative z-10">
         <a
           href="https://sinapsialab.com"
           target="_blank"
@@ -39,18 +39,18 @@ export default function Header() {
         </a>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 pb-12 pt-6 relative z-10 text-center">
+      <div className="max-w-3xl mx-auto px-4 pb-8 pt-5 relative z-10 text-center">
         <div className="inline-flex items-center gap-3 mb-5 px-4 py-1.5 rounded-full border border-portfolio-accent text-xs uppercase tracking-widest text-portfolio-text">
           <FaBriefcase className="w-3.5 h-3.5 text-portfolio-orange" />
-          Tutorial · Entrevistas y reuniones
+          Giía · Entrevistas y reuniones
         </div>
 
-        <h1 className="gradient-glow inline-block text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
+        <h1 className="gradient-glow inline-block text-3xl md:text-4xl font-extrabold mb-3 leading-tight">
           <span className="gradient-text">Prepará tu entrevista</span>{' '}
           <span className="text-portfolio-text-light">con confianza</span>
         </h1>
 
-        <p className="text-portfolio-text text-base md:text-lg max-w-2xl mx-auto">
+        <p className="text-portfolio-text text-sm md:text-base max-w-xl mx-auto">
           Guía práctica si estás buscando empleo o si emprendes y necesitas cerrar proyectos con clientes.
         </p>
 

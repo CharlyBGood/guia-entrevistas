@@ -1,5 +1,4 @@
 import {
-  FaBriefcase,
   FaBullseye,
   FaComments,
   FaLightbulb,
@@ -92,38 +91,15 @@ function App() {
     <div className="min-h-screen bg-portfolio-deep text-portfolio-text-light">
       <Header />
 
-      <main className="max-w-6xl mx-auto px-4 pt-8 pb-24 relative z-10">
-        {/* Intro panel */}
-        <div className="panel mb-8 p-6 md:p-8">
-          <div className="flex items-start gap-4 mb-4">
-            <FaBriefcase className="w-7 h-7 text-portfolio-orange flex-shrink-0 mt-1" />
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-portfolio-text-light mb-2">
-                Cómo prepararte para una entrevista (o reunión con un cliente)
-              </h2>
-              <p className="text-portfolio-text">
-                Una guía pensada para quienes están buscando empleo o emprendedor@s que quieren cerrar proyectos con confianza.
-              </p>
-            </div>
-          </div>
-
-          <div className="panel-inner mt-6 p-4 font-mono text-xs md:text-sm">
-            <pre className="gradient-text overflow-x-auto">
-{`╔══════════════════════════════════════════════════════════╗
-║  GUÍA PRÁCTICA: ENTREVISTAS Y REUNIONES CON CLIENTES    ║
-║  Fundamentos · Comunicación · Escenarios · Práctica     ║
-╚══════════════════════════════════════════════════════════╝`}
-            </pre>
-          </div>
-
-          <div className="mt-6 space-y-4 text-portfolio-text-light/90">
-            <p>
-              Ya sea que estés aplicando a un nuevo rol o presentándote ante un potencial cliente, las dinámicas son más similares de lo que parecen: en ambos casos tenés que <strong>comunicar valor</strong>, <strong>generar confianza</strong> y demostrar que sos la persona indicada para el trabajo.
-            </p>
-            <p>
-              Esta guía está dividida en dos partes. La primera cubre los fundamentos de cualquier entrevista o reunión. La segunda profundiza en los escenarios más frecuentes y cómo prepararte para responderlos bien.
-            </p>
-          </div>
+      <main className="max-w-3xl mx-auto px-4 pt-8 pb-24 relative z-10">
+        {/* Intro */}
+        <div className="mb-8 pb-8 border-b border-portfolio-accent/30 space-y-4 text-portfolio-text/90 text-sm md:text-base leading-relaxed">
+          <p>
+            Ya sea que estés aplicando a un nuevo rol o presentándote ante un potencial cliente, las dinámicas son más similares de lo que parecen: en ambos casos tenés que <strong className="text-portfolio-text-light">comunicar valor</strong>, <strong className="text-portfolio-text-light">generar confianza</strong> y demostrar que sos la persona indicada para el trabajo.
+          </p>
+          <p>
+            Esta guía está dividida en dos partes. La primera cubre los fundamentos de cualquier entrevista o reunión. La segunda profundiza en los escenarios más frecuentes y cómo prepararte para responderlos bien.
+          </p>
         </div>
 
         <InfoBox type="success" icon={<FaCheckCircle />} title="Importante">
@@ -131,12 +107,16 @@ function App() {
         </InfoBox>
 
         {/* Parte 1 separator */}
-        <div className="panel mb-8 p-6 text-center">
-          <div className="inline-flex items-center gap-2 mb-2 px-4 py-1.5 rounded-full border border-portfolio-accent text-xs uppercase tracking-widest text-portfolio-text">
-            <FaCompass className="w-3.5 h-3.5 text-portfolio-orange" />
-            Parte 1
+        <div className="my-10">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent to-portfolio-accent/60"></div>
+            <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-portfolio-text/70">
+              <FaCompass className="w-3 h-3 text-portfolio-orange" />
+              Parte 1
+            </span>
+            <div className="flex-1 h-px bg-gradient-to-r from-portfolio-accent/60 to-transparent"></div>
           </div>
-          <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">
+          <h2 className="text-xl md:text-2xl font-extrabold leading-tight text-center">
             <span className="gradient-text">Fundamentos</span>{' '}
             <span className="text-portfolio-text-light">y preguntas clave</span>
           </h2>
@@ -284,81 +264,81 @@ function App() {
         >
           <div className="space-y-5">
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Silencio prolongado durante la conversación</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Silencio prolongado durante la conversación</h4>
               <p>No lo rellenes con cualquier cosa. Si el silencio es del otro lado, esperá con calma. Si es tuyo, tomá un momento, ordenate y respondé con foco. Solo compartí una anécdota si es genuinamente relevante.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Tener un cheat sheet o lista de referencia a mano</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Tener un cheat sheet o lista de referencia a mano</h4>
               <p>Útil si lo usás como apoyo discreto, no como muleta. Puede ayudarte a no olvidar algo importante, pero sin depender de él ni hacerlo evidente.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Pedir que reformulen una pregunta</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Pedir que reformulen una pregunta</h4>
               <p>Totalmente válido. Demuestra atención y buena comunicación. Mucho mejor que responder algo que no corresponde.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Mostrar entusiasmo vs. ser impersonal</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Mostrar entusiasmo vs. ser impersonal</h4>
               <p>Un tono profesional no implica ser frío. Mostrar interés genuino y energía adecuada genera una impresión positiva. El equilibrio entre lo profesional y lo humano siempre funciona mejor.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Preguntar demasiado</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Preguntar demasiado</h4>
               <p>El interés es bienvenido, el exceso puede parecer forzado. Elegí tus preguntas con criterio.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Inventar logros o exagerar</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Inventar logros o exagerar</h4>
               <InfoBox type="warning" icon={<FaExclamationTriangle />}>
                 <p>La <strong>honestidad</strong> con entusiasmo genuino es más poderosa que cualquier historia fabricada, y mucho más sostenible.</p>
               </InfoBox>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Personalizar tu presentación para el contexto</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Personalizar tu presentación para el contexto</h4>
               <p>Siempre. Mostrar que investigaste y te preparaste específicamente para esa oportunidad marca la diferencia.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Cerrar con una nota positiva</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Cerrar con una nota positiva</h4>
               <p>Mejor que neutro. Un cierre positivo deja una impresión duradera.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Usar lenguaje impactante</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Usar lenguaje impactante</h4>
               <p>Sí, pero con respaldo. Podés hablar con convicción sobre lo que hacés, siempre que puedas sostenerlo.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">La falsa modestia</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">La falsa modestia</h4>
               <p>El equilibrio es mejor que cualquier extremo. No subestimes tus logros, pero tampoco los infles.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Enseñarle algo al entrevistador o cliente</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Enseñarle algo al entrevistador o cliente</h4>
               <p>Con cuidado y solo si agrega valor real al contexto. No es el momento de lucirse técnicamente sin necesidad.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Bluffear cuando no sabés algo</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Bluffear cuando no sabés algo</h4>
               <InfoBox type="warning" icon={<FaExclamationTriangle />}>
                 <p><strong>Reconocer</strong> que no sabés algo y mostrar disposición a aprenderlo es una respuesta válida y profesional.</p>
               </InfoBox>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Respuestas muy cortas</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Respuestas muy cortas</h4>
               <p>El monosílabo da mala impresión. Hablá, articulá, demostrá que podés comunicarte.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Tener materiales de referencia cerca</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Tener materiales de referencia cerca</h4>
               <p>Está bien como apoyo, pero no como reemplazo de la preparación. La fluidez sigue siendo clave.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">En reuniones remotas: voz y energía</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">En reuniones remotas: voz y energía</h4>
               <InfoBox type="info" icon={<FaMicrophone />}>
                 <p>Si no hay video, tu voz es todo. Variá el tono, mostrá interés, hablá con claridad. La energía se transmite igual.</p>
               </InfoBox>
@@ -367,12 +347,16 @@ function App() {
         </Section>
 
         {/* Parte 2 separator */}
-        <div className="panel mb-8 p-6 text-center mt-12">
-          <div className="inline-flex items-center gap-2 mb-2 px-4 py-1.5 rounded-full border border-portfolio-accent text-xs uppercase tracking-widest text-portfolio-text">
-            <FaLayerGroup className="w-3.5 h-3.5 text-portfolio-orange" />
-            Parte 2
+        <div className="my-10 mt-12">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent to-portfolio-accent/60"></div>
+            <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-portfolio-text/70">
+              <FaLayerGroup className="w-3 h-3 text-portfolio-orange" />
+              Parte 2
+            </span>
+            <div className="flex-1 h-px bg-gradient-to-r from-portfolio-accent/60 to-transparent"></div>
           </div>
-          <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">
+          <h2 className="text-xl md:text-2xl font-extrabold leading-tight text-center">
             <span className="gradient-text">Escenarios frecuentes</span>{' '}
             <span className="text-portfolio-text-light">y cómo prepararte</span>
           </h2>
@@ -473,47 +457,24 @@ function App() {
           title="Las 4 claves para responder bien cualquier pregunta"
           icon={<FaKey className="w-8 h-8" />}
         >
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="panel-inner p-5">
-              <div className="flex items-start gap-3">
-                <span className="gradient-text text-2xl font-extrabold">1.</span>
-                <div>
-                  <h4 className="font-bold text-portfolio-text-light mb-1">Detallá tus acciones</h4>
-                  <p className="text-sm text-portfolio-text-light/90">Qué hiciste vos, no solo el equipo.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="panel-inner p-5">
-              <div className="flex items-start gap-3">
-                <span className="gradient-text text-2xl font-extrabold">2.</span>
-                <div>
-                  <h4 className="font-bold text-portfolio-text-light mb-1">Mostrá colaboración</h4>
-                  <p className="text-sm text-portfolio-text-light/90">Cómo trabajaste con otros y qué aprendiste.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="panel-inner p-5">
-              <div className="flex items-start gap-3">
-                <span className="gradient-text text-2xl font-extrabold">3.</span>
-                <div>
-                  <h4 className="font-bold text-portfolio-text-light mb-1">Mencioná el resultado</h4>
-                  <p className="text-sm text-portfolio-text-light/90">Impacto concreto, validación, feedback recibido.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="panel-inner p-5">
-              <div className="flex items-start gap-3">
-                <span className="gradient-text text-2xl font-extrabold">4.</span>
-                <div>
-                  <h4 className="font-bold text-portfolio-text-light mb-1">Cerrá con aprendizaje</h4>
-                  <p className="text-sm text-portfolio-text-light/90">Qué te llevaste de esa experiencia.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ol className="space-y-3 text-sm">
+            <li className="flex gap-3 items-baseline">
+              <span className="gradient-text font-extrabold flex-shrink-0">1.</span>
+              <p className="text-portfolio-text/90"><strong className="text-portfolio-text-light">Detallá tus acciones</strong> — Qué hiciste vos, no solo el equipo.</p>
+            </li>
+            <li className="flex gap-3 items-baseline">
+              <span className="gradient-text font-extrabold flex-shrink-0">2.</span>
+              <p className="text-portfolio-text/90"><strong className="text-portfolio-text-light">Mostrá colaboración</strong> — Cómo trabajaste con otros y qué aprendiste.</p>
+            </li>
+            <li className="flex gap-3 items-baseline">
+              <span className="gradient-text font-extrabold flex-shrink-0">3.</span>
+              <p className="text-portfolio-text/90"><strong className="text-portfolio-text-light">Mencioná el resultado</strong> — Impacto concreto, validación, feedback recibido.</p>
+            </li>
+            <li className="flex gap-3 items-baseline">
+              <span className="gradient-text font-extrabold flex-shrink-0">4.</span>
+              <p className="text-portfolio-text/90"><strong className="text-portfolio-text-light">Cerrá con aprendizaje</strong> — Qué te llevaste de esa experiencia.</p>
+            </li>
+          </ol>
         </Section>
 
         <Section
@@ -527,62 +488,62 @@ function App() {
 
           <div className="space-y-5">
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Desafío concreto que enfrentaste</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Desafío concreto que enfrentaste</h4>
               <p>Preparate con una historia real: contexto, qué intentaste, por qué no funcionó, solución y aprendizaje.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Buenas prácticas en tu trabajo</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Buenas prácticas en tu trabajo</h4>
               <p>Hablá de cómo organizás tu trabajo, cómo priorizás la calidad y qué principios guían tu forma de hacer las cosas.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Cuándo usar soluciones existentes vs. construir algo nuevo</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Cuándo usar soluciones existentes vs. construir algo nuevo</h4>
               <p>Mostrá criterio para no reinventar la rueda, pero también capacidad para ir más allá cuando es necesario.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Cómo manejás cambios sin romper lo que ya funciona</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Cómo manejás cambios sin romper lo que ya funciona</h4>
               <p>Describí tu proceso: entorno de prueba, validación, revisión antes de aplicar cambios.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Cómo aprendés cosas nuevas en el trabajo</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Cómo aprendés cosas nuevas en el trabajo</h4>
               <p>Recursos, personas a quienes recurrís, cómo aplicás lo que aprendés.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Trabajo en equipo o con clientes</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Trabajo en equipo o con clientes</h4>
               <p>Dinámicas reales: comunicación de dependencias, impacto cruzado, visión de conjunto más allá de tu tarea.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Límites y restricciones de tu herramienta o contexto</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Límites y restricciones de tu herramienta o contexto</h4>
               <p>Mostrá que los conocés y que tenés criterio para trabajar dentro de ellos.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Del requerimiento a la solución</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Del requerimiento a la solución</h4>
               <p>Demostrá que siempre respondés a un objetivo concreto, aunque no tengas contacto directo con quien lo define.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Priorización bajo presión</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Priorización bajo presión</h4>
               <p>Cómo decidís qué va primero: impacto, dependencias, comunicación.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Debugging o resolución de errores</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Debugging o resolución de errores</h4>
               <p>Proceso claro: identificación, análisis, validación, solución. Método, no solo resultado.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Una contribución específica a un proyecto</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Una contribución específica a un proyecto</h4>
               <p>Contexto, tu rol, el desafío y el impacto. Siempre termina con lo que aprendiste.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-bold text-portfolio-orange mb-2">Aprendizaje continuo</h4>
+              <h4 className="text-sm font-bold text-portfolio-orange mb-1.5">Aprendizaje continuo</h4>
               <p>Una rutina activa: documentación, cursos, práctica, comunidad. Demostrá que seguir aprendiendo es parte de tu perfil.</p>
             </div>
           </div>
@@ -660,9 +621,9 @@ function App() {
           ]} />
         </Section>
 
-        <div className="panel mb-8 p-6 md:p-8 mt-12 text-center">
-          <FaHandshake className="w-10 h-10 text-portfolio-orange mx-auto mb-4" />
-          <h3 className="text-2xl md:text-3xl font-extrabold leading-tight mb-3">
+        <div className="panel mb-8 p-5 md:p-6 mt-12 text-center">
+          <FaHandshake className="w-7 h-7 text-portfolio-orange mx-auto mb-3" />
+          <h3 className="text-lg md:text-xl font-extrabold leading-tight mb-2">
             <span className="gradient-text">Recuerda:</span>{' '}
             <span className="text-portfolio-text-light">¡Somos importantes!</span>
           </h3>
